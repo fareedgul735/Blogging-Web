@@ -1,0 +1,202 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+  }
+  
+  .navbar {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  .blog-heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    width: 0;
+    animation: typing 6s steps(30, end) infinite, blink 0.7s step-end infinite;
+  }
+  
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 160px;
+    }
+    100% {
+      width: 0;
+    }
+  }
+  
+  @keyframes blink {
+    0%,
+    100% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #fff;
+    }
+  }
+  
+  .create-blogs {
+    width: 100%;
+    height: 88vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .blog-img {
+    width: 18%;
+    height: 42%;
+    background-image: url("update.gif");
+    background-size: 100% 100%;
+  }
+  
+  .formValidation {
+    width: 42%;
+    padding: 25px 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    margin-top: -22px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .formValidation > p {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #1a1a1a;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  .formValidation > input,
+  .formValidation > textarea {
+    width: 96%;
+    padding: 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+    background: #fff;
+  }
+  
+  .formValidation > input:focus,
+  .formValidation > textarea:focus {
+    background-color: #f9f9f9;
+    outline: none;
+  }
+  
+  .formValidation > textarea {
+    resize: none;
+    height: 80px;
+  }
+  
+  .createBlogBtn {
+    width: 100%;
+    height: 42px;
+    background: #7b61ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    transition: 0.4s ease;
+  }
+  
+  .createBlogBtn:hover {
+    background: #5a44d1;
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
+  }
+  
+  .footer {
+    width: 100%;
+    height: 60px;
+    background: #2f2c2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .footer > span {
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  @media (max-width: 500px) {
+    .navbar {
+      height: 40px;
+    }
+    .blog-heading {
+      font-size: 14px;
+    }
+    @keyframes typing {
+      0% {
+        width: 0;
+      }
+      50% {
+        width: 120px;
+      }
+      100% {
+        width: 0;
+      }
+    }
+    .blog-img {
+      display: none;
+    }
+    .formValidation {
+      margin-top: 4px;
+    }
+    .formValidation {
+      width: 82%;
+    }
+    .footer {
+      height: 40px;
+    }
+    .footer > span {
+      font-size: 12px;
+    }
+  }
+  
+  @media (min-width: 500px) and (max-width: 800px) {
+    .blog-img {
+      display: none;
+    }
+    .formValidation {
+      width: 78%;
+    }
+  }
+  
