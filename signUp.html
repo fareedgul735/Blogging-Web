@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+    <link rel="icon" type="image/x-icon" href="sideBlogs.png" />
+    <link rel="stylesheet" href="signUp.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    
+    <!-- PreLoader -->
+    <div id="preloader">
+      <h1>Blogging Web</h1>
+      <div class="line-spinner"></div>
+    </div>
+    <!-- PreLoader -->
+
+    <!-- Navbar -->
+    <div class="navbar">
+      <span id="blogHeading" class="blog-heading">Blogging Web</span>
+    </div>
+    <!-- Navbar -->
+
+    <!-- signUp -->
+    <div class="signUpDiv" id="signUpDiv">
+      <form class="signUpValidation" id="signUpValidation">
+        <div class="closeIcon">
+          <i id="closeIcon" class="icon fa-solid fa-xmark"></i>
+        </div>
+        <p>Enter Email Address:</p>
+        <input
+          type="email"
+          id="signUpEmail"
+          placeholder="Email"
+          autocomplete="off"
+        />
+        <p>Enter Email Password:</p>
+        <input
+          type="password"
+          id="signUpPassword"
+          placeholder="Password"
+          autocomplete="off"
+        />
+        <button id="signUpBtn" class="signUpBlogBtn" type="button">
+          SignUp
+        </button>
+      </form>
+    </div>
+    <!-- signUp -->
+
+    <!-- LogIn -->
+    <div class="logInDiv" id="logInDiv">
+      <form class="logInValidation" id="logInValidation">
+        <div class="closeIcon">
+          <i id="closeIcon2" class="icon fa-solid fa-xmark"></i>
+        </div>
+        <p>Enter Email Address:</p>
+        <input
+          type="email"
+          id="logInEmail"
+          placeholder="Email"
+          autocomplete="off"
+        />
+        <p>Enter Email Password:</p>
+        <input
+          type="password"
+          id="logInPassword"
+          placeholder="Password"
+          autocomplete="off"
+        />
+        <button id="logInBtn" class="logInBlogBtn" type="button">Log In</button>
+      </form>
+    </div>
+    <!-- LogIn -->
+
+    <div class="mainDiv">
+      <div class="sideButton">
+        <button id="signUpBtnUx" class="signUpBtn">
+          SignUp <i class="fa-solid fa-user-plus"></i>
+        </button>
+        <button id="logInBtnUx" class="logInBtn">Log In</button>
+      </div>
+      <div class="blogImg" id="blogImg"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span
+        >-- SigUp & LogIn @ Blogging-Web for a celebrity, brand or
+        business.</span
+      >
+    </div>
+    <!-- Footer -->
+
+    <!-- JavaScript -->
+    <script src="signUp.js" type="module"></script>
+    <!-- JavaScript -->
+  </body>
+</html>

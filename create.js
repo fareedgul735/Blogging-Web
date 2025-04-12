@@ -4,12 +4,17 @@ import {
   collection,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
   authDomain: "create-blogs-5959e.firebaseapp.com",
   projectId: "create-blogs-5959e",
-  storageBucket: "create-blogs-5959e.firebasestorage.app",
+  storageBucket: "create-blogs-5959e.appspot.com",
   messagingSenderId: "538886768958",
   appId: "1:538886768958:web:40c68aa806db23239e446f",
   measurementId: "G-NKZL02W59C",
@@ -18,17 +23,24 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 const blogRef = collection(db, "blogs");
 
 const createBlog = document.querySelector("#createBlogBtn");
 
 const createData = async () => {
+  const user = auth.currentUser;
+
+  if (!user) {
+    alert("Please log in first!");
+    return;
+  }
+
   let authorInput = document.querySelector("#author");
   let titleInput = document.querySelector("#title");
   let descriptionInput = document.querySelector("#description");
   let imageUrl = document.querySelector("#image-url");
 
-  //Jise he user create karega tu inputs field blu hojayegi //
   let inputArray = [authorInput, titleInput, descriptionInput, imageUrl];
   inputArray.forEach((input) => (input.style.border = "1px solid blue"));
 
@@ -48,38 +60,35 @@ const createData = async () => {
       Description: descriptionInput.value,
       Image: imageUrl.value,
       publishedAt: currentDate.toISOString(),
+      userId: user.uid,
     };
 
     try {
       const blogResponse = await addDoc(blogRef, payLoad);
       console.log(blogResponse);
-      alert("Create Data SuccessFully");
+      alert("Data created successfully");
+      location.href = "read.html";
 
-      // Fields ko empty karni hai tu//
       authorInput.value = "";
       titleInput.value = "";
       descriptionInput.value = "";
       imageUrl.value = "";
-      let inputArray = [authorInput, titleInput, descriptionInput, imageUrl];
-
       inputArray.forEach((input) => {
         input.style.border = "1px solid rgb(127, 125, 125)";
       });
     } catch (error) {
       console.log(error);
-      alert("Your Data is not creating!");
+      alert("Your data could not be created!");
     }
   }
 };
+
 createBlog.addEventListener("click", createData);
 
-// PreLoader//
+// PreLoader
 const preLoader = document.querySelector("#preloader");
-
 window.addEventListener("load", () => {
   setTimeout(() => {
     preLoader.style.display = "none";
-  }, 3000);
+  }, 1000);
 });
-
-// PreLoader//

@@ -1,0 +1,478 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+body {
+  font-family: sans-serif;
+}
+/* preLoader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#preloader h1 {
+  font-size: 50px;
+  margin-bottom: 30px;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.line-spinner {
+  width: 220px;
+  height: 5px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  animation: loadingLine 2s linear infinite;
+}
+
+@keyframes loadingLine {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  51% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+/* preLoader */
+
+/* Navbar */
+
+.navbar {
+  width: 100%;
+  height: 70px;
+  position: relative;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.blog-heading {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+  width: 0;
+  animation: typing 6s steps(30, end) infinite, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 130px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+/* Navbar */
+
+/* SignUp  */
+
+.signUpDiv {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #000000;
+  opacity: 0.9;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999999;
+}
+
+.closeIcon {
+  width: 100%;
+}
+
+.icon {
+  font-size: 20px;
+  position: relative;
+  left: 94%;
+}
+.icon:hover {
+  cursor: pointer;
+  color: #f00;
+}
+
+.signUpValidation {
+  width: 28%;
+  padding: 25px 20px;
+  border-radius: 14px;
+  background: rgb(255, 255, 255);
+  margin-top: -22px;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signUpValidation > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  font-weight: 800;
+  text-align: center;
+}
+
+.signUpValidation > input {
+  width: 96%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.signUpValidation > input:focus {
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.signUpBlogBtn {
+  width: 100%;
+  height: 42px;
+  background: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  transition: 0.4s ease;
+}
+
+.signUpBlogBtn:hover {
+  background: #5a44d1;
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
+}
+/* SignUp  */
+
+/* LogIn */
+
+.logInDiv {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #000000;
+  opacity: 0.9;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999999;
+}
+
+.logInValidation {
+  width: 28%;
+  padding: 25px 20px;
+  border-radius: 14px;
+  background: rgb(255, 255, 255);
+  margin-top: -22px;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logInValidation > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  font-weight: 800;
+  text-align: center;
+}
+
+.logInValidation > input {
+  width: 96%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.logInValidation > input:focus {
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.logInBlogBtn {
+  width: 100%;
+  height: 42px;
+  background: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  transition: 0.4s ease;
+}
+
+.logInBlogBtn:hover {
+  background: #5a44d1;
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
+}
+/* LogIn */
+
+/* preLoader */
+
+.mainDiv {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #fffffff6;
+}
+
+.blogImg {
+  width: 42%;
+  aspect-ratio: 16 / 10;
+  background-image: url("blogGif.gif");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+}
+
+.blogImg:hover {
+  transform: scale(1.02);
+}
+
+/* divBtn */
+
+.sideButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 22px;
+  padding: 20px;
+  animation: fadeInLeft 0.8s ease forwards;
+}
+/* divBtn */
+
+/* SignUpBtn */
+
+.signUpBtn {
+  padding: 14px 24px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #7b61ff, #9d87ff);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signUpBtn i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.signUpBtn:hover {
+  cursor: pointer;
+  background: linear-gradient(135deg, #684dff, #8f74ff);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(123, 97, 255, 0.45);
+}
+
+.signUpBtn:hover i {
+  transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* SignUpBtn */
+
+/* LogIn btn  */
+
+.logInBtn {
+  padding: 14px 24px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #7b61ff, #9d87ff);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logInBtn:hover {
+  cursor: pointer;
+  background: linear-gradient(135deg, #684dff, #8f74ff);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(123, 97, 255, 0.45);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* LogIn btn  */
+
+/* Footer  */
+
+.footer {
+  width: 100%;
+  height: 60px;
+  background: #2f2c2c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer > span {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+/* Footer  */
+
+@media (max-width: 500px) {
+  .mainDiv {
+    flex-direction: column-reverse;
+  }
+  .navbar {
+    height: 50px;
+  }
+  .blog-heading {
+    font-size: 14px;
+  }
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 0;
+    }
+  }
+
+  .signUpValidation {
+    width: 82%;
+  }
+
+  .logInValidation {
+    width: 82%;
+  }
+
+  .footer {
+    height: 40px;
+  }
+  .footer > span {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .mainDiv {
+    flex-direction: column;
+  }
+  .signUpValidation {
+    width: 82%;
+  }
+
+  .logInValidation {
+    width: 82%;
+  }
+}

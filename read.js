@@ -2,10 +2,16 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebas
 import {
   getFirestore,
   collection,
+  query,
+  where,
   getDocs,
   doc,
   deleteDoc,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
@@ -14,45 +20,38 @@ const firebaseConfig = {
   storageBucket: "create-blogs-5959e.firebasestorage.app",
   messagingSenderId: "538886768958",
   appId: "1:538886768958:web:40c68aa806db23239e446f",
-  measurementId: "G-NKZL02W59C",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const blogRef = collection(db, "blogs");
+const auth = getAuth(app);
 
-const getData = async () => {
-  try {
-    const blogData = await getDocs(blogRef);
-    return blogData;
-  } catch (error) {
-    console.log(error);
-  }
-};
+const blog = document.querySelector("#blogging");
+const spinner = document.querySelector("#spinner");
 
 const createCard = (cardDetail, id) => {
   const { Image, Title, Description, Author, publishedAt } = cardDetail;
   const descriptionLimit = 84;
-  const card = `<div class = "cardDiv">
-    <img class = "cardImg" src = "${Image}" width = "100%" height="332px" / >
-    <h2 class = "cardTitle">${Title}</h2>
-    <p class = "cardDescription">${Description.slice(
-      0,
-      descriptionLimit
-    )} .....</p>
-    <p class = "cardMeta">${Author}<span class = "cardPublishedAt">${new Date(
-    publishedAt
-  ).toLocaleString()}</span></p>
-    
-  <a class = "moreDetail" href = "detail.html#${id}" >Read More</a>
-  <i onclick="onUpdate('${id}')" class="updateBlog fa-solid fa-pen"></i>
-  <i onclick="onDelete('${id}')" class=" blogDelete fa-solid fa-trash"></i></button>
-  </div>`;
-  return card;
+
+  return `
+    <div class="cardDiv">
+      <img class="cardImg" src="${Image}" width="100%" height="332px" />
+      <h2 class="cardTitle">${Title}</h2>
+      <p class="cardDescription">${Description.slice(
+        0,
+        descriptionLimit
+      )} .....</p>
+      <p class="cardMeta">${Author}
+        <span class="cardPublishedAt">${new Date(
+          publishedAt
+        ).toLocaleString()}</span>
+      </p>
+      <a class="moreDetail" href="detail.html#${id}">Read More</a>
+      <i onclick="onUpdate('${id}')" class="updateBlog fa-solid fa-pen"></i>
+      <i onclick="onDelete('${id}')" class="blogDelete fa-solid fa-trash"></i>
+    </div>`;
 };
 
-// Blog Deleted//
 window.onDelete = async (id) => {
   const confirmDelete = confirm("Are you sure you want to delete?");
   if (confirmDelete) {
@@ -61,40 +60,37 @@ window.onDelete = async (id) => {
       alert("Blog deleted successfully!");
       location.reload();
     } catch (error) {
-      console.error("Error deleting document: ", error);
-      alert("Failed to delete!");
+      console.error("Error deleting blog:", error);
     }
   }
 };
-// Blog Deleted//
 
-// updateBlog//
 window.onUpdate = (id) => {
   window.location.href = `update.html#${id}`;
 };
-// updateBlog//
 
-const blog = document.querySelector("#blogging");
-const spinner = document.querySelector("#spinner");
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    spinner.style.display = "block";
+    blog.style.display = "none";
 
-const readData = async () => {
-  spinner.style.display = "block";
-  blog.style.display = "none";
+    try {
+      const q = query(collection(db, "blogs"), where("userId", "==", user.uid));
+      const querySnapshot = await getDocs(q);
 
-  try {
-    const data = await getData();
-    data.forEach((recData) => {
-      const receiveData = recData.data();
-      const card = createCard(receiveData, recData.id, recData);
-      blog.innerHTML += card;
-    });
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const card = createCard(data, docSnap.id);
+        blog.innerHTML += card;
+      });
 
-    spinner.style.display = "none";
-    blog.style.display = "flex";
-
-  } catch (error) {
-    console.log(error);
+      spinner.style.display = "none";
+      blog.style.display = "flex";
+    } catch (error) {
+      console.error("Error getting user blogs:", error);
+    }
+  } else {
+    alert("Please log in first.");
+    location.href = "index.html";
   }
-};
-
-readData();
+});

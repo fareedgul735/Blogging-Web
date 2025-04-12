@@ -33,7 +33,6 @@ const getId = () => {
   }
 };
 
-// ✅ Function to get blog data by ID
 const getDetailData = async () => {
   try {
     const id = getId();
@@ -53,7 +52,6 @@ const getDetailData = async () => {
   }
 };
 
-// ✅ Function to show data in DOM
 const showDataInDOM = (data) => {
   const { Image, Title, Description, Author, publishedAt } = data;
   const blogDetailDiv = document.querySelector("#blogDetail");
