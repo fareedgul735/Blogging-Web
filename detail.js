@@ -6,6 +6,7 @@ import {
   doc,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
+
 // Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
@@ -80,3 +81,11 @@ const showDataInDOM = (data) => {
 };
 
 getDetailData();
+
+window.onload = () => {
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (!user) {
+    location.href = "signUp.html";
+  }
+};

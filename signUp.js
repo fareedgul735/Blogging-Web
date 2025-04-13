@@ -114,18 +114,17 @@ const onLogIn = async (e) => {
 
       alert("Log In Successfully");
 
-      setTimeout(() => {
-        location.href = "create.html";
-      }, 500);
-
-      console.log(response);
-
-      logInEmail.value = "";
-      logInPassword.value = "";
-
-      inputsArray.forEach((inputField) => {
-        inputField.style.border = "1px solid gray";
-      });
+      if (!!response) {
+        logInEmail.value = "";
+        logInPassword.value = "";
+        localStorage.setItem("user", JSON.stringify(response));
+        inputsArray.forEach((inputField) => {
+          inputField.style.border = "1px solid gray";
+        });
+        setTimeout(() => {
+          location.href = "create.html";
+        }, 500);
+      }
     } catch (e) {
       console.log(e);
       alert("Internal Server Error");
@@ -138,6 +137,14 @@ const onLogIn = async (e) => {
 };
 
 logInButton.addEventListener("click", onLogIn);
+
+window.onload = () => {
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (!!user) {
+    location.href = "create.html";
+  }
+};
 
 // LogIn-Authentication //
 

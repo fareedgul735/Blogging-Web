@@ -73,6 +73,15 @@ updateBtn.addEventListener("click", async () => {
     Title: updateTitle.value,
     Description: updateDes.value,
     Image: updateImageUrl.value,
+  
+  };
+
+  window.onload = () => {
+    let user = localStorage.getItem("user");
+    user = JSON.parse(user);
+    if (!user) {
+      location.href = "signUp.html";
+    }
   };
 
   try {

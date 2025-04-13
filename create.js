@@ -85,6 +85,15 @@ const createData = async () => {
 
 createBlog.addEventListener("click", createData);
 
+
+window.onload = () => {
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (!user) {
+    location.href = "signUp.html";
+  }
+};
+
 // PreLoader
 const preLoader = document.querySelector("#preloader");
 window.addEventListener("load", () => {

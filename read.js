@@ -12,6 +12,7 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { checkUser } from "./checkedLoggedIn";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
@@ -68,6 +69,15 @@ window.onDelete = async (id) => {
 window.onUpdate = (id) => {
   window.location.href = `update.html#${id}`;
 };
+
+window.onload = () => {
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  if (!user) {
+    location.href = "signUp.html";
+  }
+};
+
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
