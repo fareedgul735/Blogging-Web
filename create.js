@@ -60,9 +60,9 @@ const createData = async () => {
       Description: descriptionInput.value,
       Image: imageUrl.value,
       publishedAt: currentDate.toISOString(),
-      userId: user.uid,
+      uid: user.uid,
+      user: { userId: user?.uid, name: user?.displayName },
     };
-
     try {
       const blogResponse = await addDoc(blogRef, payLoad);
       console.log(blogResponse);
@@ -85,7 +85,6 @@ const createData = async () => {
 
 createBlog.addEventListener("click", createData);
 
-
 window.onload = () => {
   let user = localStorage.getItem("user");
   user = JSON.parse(user);
@@ -101,3 +100,19 @@ window.addEventListener("load", () => {
     preLoader.style.display = "none";
   }, 1000);
 });
+
+// const url = "https://abwfisafbjptoxfaxiud.supabase.co";
+// const anonKey =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFid2Zpc2FmYmpwdG94ZmF4aXVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ1NTUxODksImV4cCI6MjA2MDEzMTE4OX0.u-rQYaFtmQXgTJ0_3T85T1P28Wmb7F81jfTWl2O8xdA";
+
+// const sbClient = supabase.createClient(url, anonKey);
+// console.log(sbClient, "==createclient");
+
+// const file = document.getElementById("files");
+
+// async function onFileChanged(e) {
+//   const file = e.target.files[0];
+//   // console.log(file);
+//   await sbClient.storage.from("blogging-web").upload("blogs/abc.png", file);
+// }
+// file.addEventListener("changed", onFileChanged);

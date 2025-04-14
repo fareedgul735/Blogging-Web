@@ -1,16 +1,12 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
 }
-
 body {
-  overflow-x: hidden;
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
   font-family: sans-serif;
 }
-
-/* Preloader */
+/* preLoader */
 #preloader {
   position: fixed;
   top: 0;
@@ -23,7 +19,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999999999;
+  z-index: 9999;
 }
 
 #preloader h1 {
@@ -58,23 +54,23 @@ body {
     transform-origin: right;
   }
 }
+/* preLoader */
 
 /* Navbar */
+
 .navbar {
   width: 100%;
   height: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-  position: fixed;
-  top: 0;
-  padding: 0 20px;
-  z-index: 9999;
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-.tagline {
+.blog-heading {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
   font-family: "Poppins", sans-serif;
   font-size: 20px;
   color: #ffffff;
@@ -86,146 +82,331 @@ body {
 }
 
 @keyframes typing {
-  0% { width: 0; }
-  50% { width: 140px; }
-  100% { width: 0; }
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 130px;
+  }
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: #fff; }
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
 }
+/* Navbar */
 
-.signUpFile {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-}
+/* SignUp  */
 
-.signUpBtn {
-  padding: 10px 18px;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: 0.3s;
-  display: inline-block;
-}
-
-.signUpBtn:hover {
-  background-color: #5a44d1;
-  color: #ffffff;
-}
-
-
-/* Main Blog Section */
-.main-read-blogs {
-  width: 100%;
-  background: #ffffff;
-  display: flex;
-  padding-top: 70px;
-}
-
-/* Sidebar */
-.readBlog {
-  width: 15%;
-  min-height: calc(100vh - 70px);
-  background: #ffffff;
-  position: fixed;
-  top: 70px;
-  left: 0;
-  border-radius: 12px;
-  display: flex;
+.signUpDiv {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #000000;
+  opacity: 0.9;
+  display: none;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 0 8px rgba(0, 40, 220, 0.1);
+  position: fixed;
+  z-index: 999999;
+}
+
+.closeIcon {
+  width: 100%;
+}
+
+.icon {
+  font-size: 20px;
+  position: relative;
+  left: 94%;
+}
+.icon:hover {
+  cursor: pointer;
+  color: #f00;
+}
+
+.signUpValidation {
+  width: 28%;
+  padding: 25px 20px;
+  border-radius: 14px;
+  background: rgb(255, 255, 255);
+  margin-top: -22px;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signUpValidation > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  font-weight: 800;
+  text-align: center;
+}
+
+.signUpValidation > input {
+  width: 96%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.signUpValidation > input:focus {
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.signUpBlogBtn {
+  width: 100%;
+  height: 42px;
+  background: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  transition: 0.4s ease;
+}
+
+.signUpBlogBtn:hover {
+  background: #5a44d1;
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
+}
+/* SignUp  */
+
+/* LogIn */
+
+.logInDiv {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #000000;
+  opacity: 0.9;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 999999;
+}
+
+.logInValidation {
+  width: 28%;
+  padding: 25px 20px;
+  border-radius: 14px;
+  background: rgb(255, 255, 255);
+  margin-top: -22px;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logInValidation > p {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #1a1a1a;
+  font-weight: 800;
+  text-align: center;
+}
+
+.logInValidation > input {
+  width: 96%;
+  padding: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.logInValidation > input:focus {
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+.logInBlogBtn {
+  width: 100%;
+  height: 42px;
+  background: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  transition: 0.4s ease;
+}
+
+.logInBlogBtn:hover {
+  background: #5a44d1;
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
+}
+/* LogIn */
+
+/* preLoader */
+
+.mainDiv {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #fffffff6;
 }
 
 .blogImg {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 5px solid #fff;
-  background-image: url("sideBlogs.png");
-  background-size: cover;
+  width: 42%;
+  aspect-ratio: 16 / 10;
+  background-image: url("blogGif.gif");
+  background-size: 100% 100%;
   background-position: center;
-  box-shadow: 0 0 15px rgba(255, 102, 0, 0.927);
-  animation: rotate 12s linear infinite;
+  background-repeat: no-repeat;
+  border-radius: 16px;
 }
 
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.blogImg:hover {
+  transform: scale(1.02);
 }
 
-/* Blog Cards */
-.blogs {
-  width: 85%;
-  margin-left: 15%;
-  min-height: calc(100vh - 70px);
-  padding: 20px;
+/* divBtn */
+
+.sideButton {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 20px;
-}
-
-.cardDiv {
-  width: 100%;
-  max-width: 360px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cardDiv:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.cardImg {
-  object-fit: cover;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
-.cardTitle {
-  font-size: clamp(18px, 2.5vw, 24px);
-  color: #333;
+  height: 100%;
+  gap: 22px;
   padding: 20px;
+  animation: fadeInLeft 0.8s ease forwards;
+}
+/* divBtn */
+
+/* SignUpBtn */
+
+.signUpBtn {
+  padding: 14px 24px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #7b61ff, #9d87ff);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.cardDescription {
-  font-size: clamp(14px, 2vw, 16px);
-  color: #555;
-  padding: 0 20px;
-  line-height: 1.6;
+.signUpBtn i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
 }
 
-.cardMeta {
-  font-size: 14px;
-  color: #777;
-  padding: 10px 20px;
+.signUpBtn:hover {
+  cursor: pointer;
+  background: linear-gradient(135deg, #684dff, #8f74ff);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(123, 97, 255, 0.45);
 }
 
-.moreDetail {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 15px 20px;
-  background-color: #3498db;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+.signUpBtn:hover i {
+  transform: scale(1.1) rotate(5deg);
 }
 
-.moreDetail:hover {
-  background-color: #2980b9;
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Footer */
+/* SignUpBtn */
+
+/* LogIn btn  */
+
+.logInBtn {
+  padding: 14px 24px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #7b61ff, #9d87ff);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logInBtn:hover {
+  cursor: pointer;
+  background: linear-gradient(135deg, #684dff, #8f74ff);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(123, 97, 255, 0.45);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* LogIn btn  */
+
+/* Footer  */
+
 .footer {
   width: 100%;
   height: 60px;
@@ -241,103 +422,57 @@ body {
 
 .footer > span {
   font-size: 16px;
+  font-family: sans-serif;
 }
+/* Footer  */
 
-/* Spinner */
-#spinner {
-  display: none;
-  width: 80px;
-  height: 80px;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #000000;
-  border-radius: 50%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  background-color: #fff;
-  padding: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 992px) {
-  .readBlog {
-    display: none;
+@media (max-width: 500px) {
+  .mainDiv {
+    flex-direction: column-reverse;
   }
-
-  .blogs {
-    width: 100%;
-    margin-left: 0;
+  .navbar {
+    height: 50px;
   }
-}
-
-@media (max-width: 768px) {
-  .cardDiv {
-    width: 100%;
-    max-width: 90%;
-    max-height: 500px; /* limit the height */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cardImg {
-    width: 100%;
-    height: 180px; /* fixed height for image */
-    object-fit: cover;
-  }
-
-  .cardTitle {
-    font-size: 18px;
-    padding: 10px 15px;
-  }
-
-  .cardDescription {
-    font-size: 14px;
-    padding: 0 15px;
-    line-height: 1.4;
-    flex-grow: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .cardMeta {
-    font-size: 12px;
-    padding: 10px 15px;
-  }
-
-  .moreDetail {
-    padding: 10px 16px;
-    font-size: 14px;
-    margin: 10px 15px 15px;
-    align-self: flex-start;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .cardTitle {
-    font-size: 18px;
-  }
-
-  .cardDescription {
+  .blog-heading {
     font-size: 14px;
   }
-
-  .moreDetail {
-    padding: 10px 16px;
-    font-size: 14px;
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 0;
+    }
   }
 
+  .signUpValidation {
+    width: 82%;
+  }
+
+  .logInValidation {
+    width: 82%;
+  }
+
+  .footer {
+    height: 40px;
+  }
   .footer > span {
     font-size: 12px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 800px) {
+  .mainDiv {
+    flex-direction: column;
+  }
+  .signUpValidation {
+    width: 82%;
+  }
+
+  .logInValidation {
+    width: 82%;
   }
 }

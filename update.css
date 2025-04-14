@@ -60,11 +60,25 @@ body {
   align-items: center;
 }
 
-.blog-img {
-  width: 18%;
-  height: 42%;
-  background-image: url("update.gif");
-  background-size: 100% 100%;
+.blogImg {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  background-image: url("sideBlogs.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.927);
+  animation: rotate 12s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .formValidation {
@@ -178,7 +192,7 @@ body {
       width: 0;
     }
   }
-  .blog-img {
+  .blogImg {
     display: none;
   }
   .formValidation {
@@ -196,7 +210,7 @@ body {
 }
 
 @media (min-width: 500px) and (max-width: 800px) {
-  .blog-img {
+  .blogImg {
     display: none;
   }
   .formValidation {

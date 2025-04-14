@@ -12,7 +12,6 @@ import {
   getAuth,
   onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { checkUser } from "./checkedLoggedIn";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
@@ -30,13 +29,24 @@ const auth = getAuth(app);
 const blog = document.querySelector("#blogging");
 const spinner = document.querySelector("#spinner");
 
-const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt } = cardDetail;
-  const descriptionLimit = 84;
+const fetchCharacterByName = (name) => {
+  let array = name
+    .split(" ")
+    .map((word) => word[0].toUpperCase())
+    .join("");
+  return array;
+};
 
+const createCard = (cardDetail, id) => {
+  const { Image, Title, Description, Author, publishedAt, user } = cardDetail;
+  const { name } = user || {};
+  const descriptionLimit = 84;
   return `
     <div class="cardDiv">
-      <img class="cardImg" src="${Image}" width="100%" height="332px" />
+      <img class="cardImg" src="${Image}" width="100%" height="242px" />
+    <div class = "avatarDiv">
+    <a class = "avatarName" href = "#">${fetchCharacterByName(name)}</a>
+    </div>
       <h2 class="cardTitle">${Title}</h2>
       <p class="cardDescription">${Description.slice(
         0,
@@ -61,7 +71,7 @@ window.onDelete = async (id) => {
       alert("Blog deleted successfully!");
       location.reload();
     } catch (error) {
-      console.error("Error deleting blog:", error);
+      alert("Error deleting blog:", error);
     }
   }
 };
@@ -78,14 +88,16 @@ window.onload = () => {
   }
 };
 
-
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     spinner.style.display = "block";
     blog.style.display = "none";
 
     try {
-      const q = query(collection(db, "blogs"), where("userId", "==", user.uid));
+      const q = query(
+        collection(db, "blogs"),
+        where("user.userId", "==", user.uid)
+      );
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((docSnap) => {
@@ -97,7 +109,7 @@ onAuthStateChanged(auth, async (user) => {
       spinner.style.display = "none";
       blog.style.display = "flex";
     } catch (error) {
-      console.error("Error getting user blogs:", error);
+      alert("Error getting user blogs:", error);
     }
   } else {
     alert("Please log in first.");

@@ -55,8 +55,8 @@ const getBlogData = async () => {
     alert("Blog Not Found !");
   }
 };
-getBlogData();
-updateBtn.addEventListener("click", async () => {
+  getBlogData();
+  updateBtn.addEventListener("click", async () => {
   const updateEmpty = updateArray.some((inputs) => inputs.value.trim() === "");
   if (updateEmpty) {
     alert("All Fields are required");
@@ -73,7 +73,6 @@ updateBtn.addEventListener("click", async () => {
     Title: updateTitle.value,
     Description: updateDes.value,
     Image: updateImageUrl.value,
-  
   };
 
   window.onload = () => {

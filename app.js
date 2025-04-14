@@ -1,10 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import {
   getFirestore,
   collection,
-  getDocs,
-  doc,
-  deleteDoc,
+  addDoc,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -17,79 +21,194 @@ const firebaseConfig = {
   measurementId: "G-NKZL02W59C",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
-const blogRef = collection(db, "blogs");
 
-const getData = async () => {
-  try {
-    const blogData = await getDocs(blogRef);
-    return blogData;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// SignUp-Authentication //
 
-const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt } = cardDetail;
-  const descriptionLimit = 84;
-  const card = `<div class = "cardDiv">
-    <img class = "cardImg" src = "${Image}" width = "100%" height="332px" / >
-    <h2 class = "cardTitle">${Title}</h2>
-    <p class = "cardDescription">${Description.slice(
-      0,
-      descriptionLimit
-    )} .....</p>
-    <p class = "cardMeta">${Author}<span class = "cardPublishedAt">${new Date(
-    publishedAt
-  ).toLocaleString()}</span></p>
-    
-  <a class = "moreDetail" href = "detail.html#${id}" >Read More</a>
-  </div>`;
-  return card;
-};
+let signUpBtn = document.getElementById("signUpBtn");
 
-const blog = document.querySelector("#blogging");
-const spinner = document.querySelector("#spinner");
+const onSignUp = async (e) => {
+  e.preventDefault();
+  let name = document.getElementById("userName");
+  let verifyEmail = document.getElementById("signUpEmail");
+  let verifyPassword = document.getElementById("signUpPassword");
 
-const readData = async () => {
-  spinner.style.display = "block";
-  blog.style.display = "none";
+  let inputsArray = [verifyEmail, verifyPassword];
+  inputsArray.forEach(
+    (inputField) => (inputField.style.border = "2px solid blue")
+  );
 
-  try {
-    const data = await getData();
-    data.forEach((recData) => {
-      const receiveData = recData.data();
-      const card = createCard(receiveData, recData.id, recData);
-      blog.innerHTML += card;
+  let fieldIsEmpty = inputsArray.some(
+    (inputField) => inputField.value.trim() === ""
+  );
+
+  if (fieldIsEmpty) {
+    alert("fields are required ");
+    inputsArray.forEach((inputField) => {
+      if (inputField.value.trim() === "") {
+        inputField.style.border = "2px solid red";
+      }
     });
+  } else {
+    try {
+      let response = await createUserWithEmailAndPassword(
+        auth,
+        verifyEmail.value,
+        verifyPassword.value
+      );
+      await updateProfile(response.user, {
+        displayName: name?.value,
+      });
+      if (!!response) {
+        alert("SignUp SuccessFully");
+        verifyEmail.value = "";
+        verifyPassword.value = "";
+        setTimeout(() => {
+          location.href = "create.html";
+        }, 500);
+        inputsArray.forEach(
+          (inputField) => (inputField.style.border = "1px solid gray")
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Internal Server Error");
 
-    spinner.style.display = "none";
-    blog.style.display = "flex";
-  } catch (error) {
-    console.log(error);
+      inputsArray.forEach(
+        (inputField) => (inputField.style.border = "2px solid red")
+      );
+    }
+  }
+};
+signUpBtn.addEventListener("click", onSignUp);
+
+// SignUp-Authentication //
+
+// LogIn-Authentication //
+let logInButton = document.getElementById("logInBtn");
+
+const onLogIn = async (e) => {
+  e.preventDefault();
+  let logInEmail = document.getElementById("logInEmail");
+  let logInPassword = document.getElementById("logInPassword");
+
+  let inputsArray = [logInEmail, logInPassword];
+
+  inputsArray.forEach((inputField) => {
+    inputField.style.border = "2px solid blue";
+  });
+
+  let fieldIsEmpty = inputsArray.some(
+    (inputField) => inputField.value.trim() === ""
+  );
+
+  if (fieldIsEmpty) {
+    alert("Fields are required");
+
+    inputsArray.forEach((inputField) => {
+      if (inputField.value.trim() === "") {
+        inputField.style.border = "2px solid red";
+      }
+    });
+  } else {
+    try {
+      const response = await signInWithEmailAndPassword(
+        auth,
+        logInEmail.value,
+        logInPassword.value
+      );
+
+      alert("Log In Successfully");
+
+      if (!!response) {
+        logInEmail.value = "";
+        logInPassword.value = "";
+        localStorage.setItem("user", JSON.stringify(response));
+        inputsArray.forEach((inputField) => {
+          inputField.style.border = "1px solid gray";
+        });
+        setTimeout(() => {
+          location.href = "create.html";
+        }, 500);
+      }
+    } catch (e) {
+      console.log(e);
+      alert("Internal Server Error");
+
+      inputsArray.forEach((inputField) => {
+        inputField.style.border = "2px solid red";
+      });
+    }
   }
 };
 
-readData();
+logInButton.addEventListener("click", onLogIn);
 
 window.onload = () => {
   let user = localStorage.getItem("user");
   user = JSON.parse(user);
-  if (!user) {
-    location.href = "signUp.html";
+  if (!!user) {
+    location.href = "create.html";
   }
 };
 
-// preLoader //
+// LogIn-Authentication //
 
-let preLoader = document.getElementById("preloader");
+// Dom Styling //
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    preLoader.style.display = "none";
-  }, 1000);
+// SignUp //
+let signUpForm = document.getElementById("signUpValidation");
+let signUpSideBtn = document.getElementById("signUpBtnUx");
+let signUpDiv = document.getElementById("signUpDiv");
+let logInDiv = document.getElementById("logInDiv");
+let closeBtn = document.getElementById("closeIcon");
+let closeBtn2 = document.getElementById("closeIcon2");
+
+signUpSideBtn.addEventListener("click", () => {
+  signUpForm.style.display = "flex";
+  signUpDiv.style.display = "flex";
+  logInForm.style.display = "none";
+
+  document.getElementById("signUpEmail").value = "";
+  document.getElementById("signUpPassword").value = "";
+});
+// SignUp //
+
+// LogIn //
+let logInForm = document.getElementById("logInValidation");
+let logInBtn = document.getElementById("logInBtnUx");
+
+logInBtn.addEventListener("click", () => {
+  logInForm.style.display = "flex";
+  logInDiv.style.display = "flex";
+  signUpForm.style.display = "none";
+
+  document.getElementById("logInEmail").value = "";
+  document.getElementById("logInPassword").value = "";
+});
+// LogIn //
+
+// closeBtns //
+
+closeBtn.addEventListener("click", () => {
+  signUpDiv.style.display = "none";
 });
 
+closeBtn2.addEventListener("click", () => {
+  logInDiv.style.display = "none";
+});
+
+// closeBtns //
+
+// Dom Styling //
+
+// preLoader //
+let preLoading = document.getElementById("preloader");
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    preLoading.style.display = "none";
+  }, 2000);
+});
 // preLoader //
