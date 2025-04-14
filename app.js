@@ -171,6 +171,7 @@ signUpSideBtn.addEventListener("click", () => {
   signUpDiv.style.display = "flex";
   logInForm.style.display = "none";
 
+  document.getElementById("userName").value = "";
   document.getElementById("signUpEmail").value = "";
   document.getElementById("signUpPassword").value = "";
 });
@@ -185,6 +186,7 @@ logInBtn.addEventListener("click", () => {
   logInDiv.style.display = "flex";
   signUpForm.style.display = "none";
 
+  document.getElementById("userName").value = "";
   document.getElementById("logInEmail").value = "";
   document.getElementById("logInPassword").value = "";
 });
