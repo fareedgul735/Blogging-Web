@@ -101,6 +101,14 @@ body {
   font-style: italic;
 }
 
+.noBlogFound {
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  color: rgb(0, 0, 206);
+  font-size: 32px;
+}
+
 #imageOverlay {
   position: fixed;
   top: 0;
@@ -121,17 +129,15 @@ body {
   box-shadow: 0 0 20px #fff;
 }
 
-#blogHeading {
+.blogHeading {
   text-align: center;
   color: #f00;
   margin-top: 22px;
 }
 
-@media  (max-width: 502px) {
-
+@media (max-width: 502px) {
   .detailImg {
     width: 250px;
     height: 250px;
-
-}
+  }
 }

@@ -1,78 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Your Blog</title>
     <link rel="icon" type="image/x-icon" href="sideBlogs.png" />
-    <link rel="stylesheet" href="update.css">
-</head>
-<body>
-    <!-- HTML -->
-    <!-- Navbar -->
+    <link rel="stylesheet" href="update.css" />
+  </head>
+  <body>
     <div class="navbar">
-        <span id="blogHeading" class="blog-heading">Update Your Blog</span>
-      </div>
-      <!-- Navbar -->
-  
-      <!-- create-blogs -->
-      <div class="create-blogs">
-        <!-- blog-img -->
-        <div class="blogImg"></div>
-        <!-- blog-img -->
-  
-        <!-- formValidation -->
-          <div class="formValidation">
-            <p>Update the Author:</p>
-            <input
-              id="updateAuthor"
-              type="text"
-              placeholder="Enter the Author"
-              autocomplete="off"
-              required="required"
-            />
-            <p>Update the Title:</p>
-            <input
-              id="updateTitle"
-              type="text"
-              placeholder="Enter the Title"
-              autocomplete="off"
-              required="required"
-            />
-            <p>Update the Description:</p>
-            <textarea
-              id="updateDescription"
-              type="text"
-              placeholder="Enter the Description"
-              autocomplete="off"
-              required="required"
-            ></textarea>
-            <p>Update the Image-Url:</p>
-            <input
-              id="updateImageUrl"
-              type="url"
-              placeholder="Enter the Image-Url"
-              autocomplete="off"
-              required="required"
-            />
-            <button type="button" id="updateBlogBtn" class="createBlogBtn">
-              Update Blog
-            </button>
-          </div>
-        <!-- formValidation -->
-      </div>
-      <!-- create-blogs -->
-  
-      <!-- Footer -->
-      <div class="footer">
-        <span>-- Update a Blogs @ for a celebrity, brand or business.</span>
-      </div>
-      <!-- Footer -->
-  
-    <!-- HTML -->
+      <span id="blogHeading" class="blog-heading">Update Your Blog</span>
+    </div>
 
-    <!-- JavaScript -->
-     <script src="update.js" type="module"></script>
-    <!-- JavaScript -->
-</body>
+    <div class="create-blogs">
+      <div class="blogImg"></div>
+
+      <div class="formValidation">
+        <p>Update the Author:</p>
+        <input
+          id="updateAuthor"
+          type="text"
+          placeholder="Enter the Author"
+          autocomplete="off"
+          required="required"
+        />
+        <p>Update the Title:</p>
+        <input
+          id="updateTitle"
+          type="text"
+          placeholder="Enter the Title"
+          autocomplete="off"
+          required="required"
+        />
+        <p>Update the Description:</p>
+        <textarea
+          id="updateDescription"
+          type="text"
+          placeholder="Enter the Description"
+          autocomplete="off"
+          required="required"
+        ></textarea>
+        <p>Update the Image-Url:</p>
+        <input
+          id="updateImageUrl"
+          type="url"
+          placeholder="Enter the Image-Url"
+          autocomplete="off"
+          required="required"
+        />
+        <button type="button" id="updateBlogBtn" class="createBlogBtn">
+          Update Blog
+        </button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>-- Update a Blogs @ for a celebrity, brand or business.</span>
+    </div>
+
+    <script src="update.js" type="module"></script>
+  </body>
 </html>

@@ -17,7 +17,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
   authDomain: "create-blogs-5959e.firebaseapp.com",
   projectId: "create-blogs-5959e",
-  storageBucket: "create-blogs-5959e.firebasestorage.app",
+  storageBucket: "create-blogs-5959e.appspot.com",
   messagingSenderId: "538886768958",
   appId: "1:538886768958:web:40c68aa806db23239e446f",
 };
@@ -30,24 +30,25 @@ const blog = document.querySelector("#blogging");
 const spinner = document.querySelector("#spinner");
 
 const fetchCharacterByName = (name) => {
-  let array = name
+  if (!name) return "NA";
+  return name
     .split(" ")
     .map((word) => word[0].toUpperCase())
     .join("");
-  return array;
 };
 
 const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt, user } = cardDetail;
-  const { name } = user || {};
-  const descriptionLimit = 84;
+  const { Image, Title, Description, Author, publishedAt, name } = cardDetail;
+  const titleLimit = 10;
+  const descriptionLimit = 34;
+
   return `
     <div class="cardDiv">
       <img class="cardImg" src="${Image}" width="100%" height="242px" />
-    <div class = "avatarDiv">
-    <a class = "avatarName" href = "#">${fetchCharacterByName(name)}</a>
-    </div>
-      <h2 class="cardTitle">${Title}</h2>
+      <div class="avatarDiv">
+        <a class="avatarName" href="#">${fetchCharacterByName(name)}</a>
+      </div>
+      <h2 class="cardTitle">${Title.slice(0, titleLimit)} ...</h2>
       <p class="cardDescription">${Description.slice(
         0,
         descriptionLimit
@@ -71,7 +72,8 @@ window.onDelete = async (id) => {
       alert("Blog deleted successfully!");
       location.reload();
     } catch (error) {
-      alert("Error deleting blog:", error);
+      console.log("Error deleting blog:", error);
+      alert("Error deleting blog.");
     }
   }
 };
@@ -80,36 +82,30 @@ window.onUpdate = (id) => {
   window.location.href = `update.html#${id}`;
 };
 
-window.onload = () => {
-  let user = localStorage.getItem("user");
-  user = JSON.parse(user);
-  if (!user) {
-    location.href = "signUp.html";
-  }
-};
-
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     spinner.style.display = "block";
     blog.style.display = "none";
 
     try {
-      const q = query(
-        collection(db, "blogs"),
-        where("user.userId", "==", user.uid)
-      );
+      const q = query(collection(db, "blogs"), where("uid", "==", user.uid));
       const querySnapshot = await getDocs(q);
 
-      querySnapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const card = createCard(data, docSnap.id);
-        blog.innerHTML += card;
-      });
+      if (querySnapshot.empty) {
+        blog.innerHTML = `<p class= "noBlogFound">No blogs found.</p>`;
+      } else {
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const card = createCard(data, docSnap.id);
+          blog.innerHTML += card;
+        });
+      }
 
       spinner.style.display = "none";
       blog.style.display = "flex";
     } catch (error) {
-      alert("Error getting user blogs:", error);
+      console.log("Error getting blogs:", error);
+      alert("Error getting user blogs.");
     }
   } else {
     alert("Please log in first.");

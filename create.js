@@ -7,9 +7,9 @@ import {
 import {
   getAuth,
   onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDQSx-_hYSNv4Q3o2tzg3SCei7FB3Xj9kM",
   authDomain: "create-blogs-5959e.firebaseapp.com",
@@ -20,7 +20,6 @@ const firebaseConfig = {
   measurementId: "G-NKZL02W59C",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -61,8 +60,9 @@ const createData = async () => {
       Image: imageUrl.value,
       publishedAt: currentDate.toISOString(),
       uid: user.uid,
-      user: { userId: user?.uid, name: user?.displayName },
+      name: user.displayName,
     };
+
     try {
       const blogResponse = await addDoc(blogRef, payLoad);
       console.log(blogResponse);
@@ -85,20 +85,40 @@ const createData = async () => {
 
 createBlog.addEventListener("click", createData);
 
-window.onload = () => {
-  let user = localStorage.getItem("user");
-  user = JSON.parse(user);
+onAuthStateChanged(auth, (user) => {
   if (!user) {
-    location.href = "signUp.html";
+    alert("Please log in first.");
+    location.href = "index.html";
   }
-};
+});
 
-// PreLoader
 const preLoader = document.querySelector("#preloader");
 window.addEventListener("load", () => {
   setTimeout(() => {
     preLoader.style.display = "none";
-  }, 1000);
+  }, 500);
+});
+
+const signOutBtn = document.getElementById("signOutBtn");
+const modal = document.getElementById("signOutModal");
+const confirmBtn = document.getElementById("confirmSignOut");
+const cancelBtn = document.getElementById("cancelSignOut");
+
+signOutBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+cancelBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+confirmBtn.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    location.href = "index.html";
+  } catch (error) {
+    alert("Error Login out:", error.message);
+  }
 });
 
 // const url = "https://abwfisafbjptoxfaxiud.supabase.co";

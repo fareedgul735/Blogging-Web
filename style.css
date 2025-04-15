@@ -6,7 +6,6 @@
 body {
   font-family: sans-serif;
 }
-/* preLoader */
 #preloader {
   position: fixed;
   top: 0;
@@ -54,9 +53,7 @@ body {
     transform-origin: right;
   }
 }
-/* preLoader */
 
-/* Navbar */
 
 .navbar {
   width: 100%;
@@ -86,7 +83,7 @@ body {
     width: 0;
   }
   50% {
-    width: 130px;
+    width: 140px;
   }
   100% {
     width: 0;
@@ -102,9 +99,7 @@ body {
     border-color: #fff;
   }
 }
-/* Navbar */
 
-/* SignUp  */
 
 .signUpDiv {
   min-width: 100vw;
@@ -199,9 +194,7 @@ body {
   transform: translateY(-2px);
   box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
 }
-/* SignUp  */
 
-/* LogIn */
 
 .logInDiv {
   min-width: 100vw;
@@ -282,9 +275,7 @@ body {
   transform: translateY(-2px);
   box-shadow: 0px 5px 15px rgba(123, 97, 255, 0.3);
 }
-/* LogIn */
 
-/* preLoader */
 
 .mainDiv {
   width: 100%;
@@ -309,7 +300,7 @@ body {
   transform: scale(1.02);
 }
 
-/* divBtn */
+
 
 .sideButton {
   display: flex;
@@ -320,9 +311,7 @@ body {
   padding: 20px;
   animation: fadeInLeft 0.8s ease forwards;
 }
-/* divBtn */
 
-/* SignUpBtn */
 
 .signUpBtn {
   padding: 14px 24px;
@@ -366,9 +355,6 @@ body {
   }
 }
 
-/* SignUpBtn */
-
-/* LogIn btn  */
 
 .logInBtn {
   padding: 14px 24px;
@@ -403,9 +389,7 @@ body {
   }
 }
 
-/* LogIn btn  */
 
-/* Footer  */
 
 .footer {
   width: 100%;
@@ -424,7 +408,6 @@ body {
   font-size: 16px;
   font-family: sans-serif;
 }
-/* Footer  */
 
 @media (max-width: 500px) {
   .mainDiv {

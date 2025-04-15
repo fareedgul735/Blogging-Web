@@ -5,39 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Blogs</title>
     <link rel="icon" type="image/x-icon" href="sideBlogs.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="create.css" />
   </head>
   <body>
-    <!-- HTML -->
-
-    <!-- PreLoader -->
     <div id="preloader">
-      <h1>Loading...</h1>
       <div class="circle-spinner"></div>
     </div>
 
-    <!-- PreLoader -->
+    <div class="autoTypingNavbar">
+      <span class="tagline">Create Blogs</span>
+    </div>
 
-    <!-- Navbar -->
     <div class="navbar">
-      <div class="socialFile">
-        <a class="socialFileBtn" href="index.html">Social Blogs</a>
-      </div>
-      <span id="blogHeading" class="blog-heading">Create Your Blog</span>
-      <div class="readHtmlFile">
-        <a class="readHtmlBtn" href="read.html">View Blogs</a>
+      <img
+        src="sideBlogs.png"
+        class="navbarLogo"
+        alt="blogLogo"
+        width="28px"
+        height="28px"
+      />
+      <a href="social.html">
+        Social Blogs <i class="fa-solid fa-thumbs-up"></i>
+      </a>
+      <a href="#" class="socialBlogBtn"
+        >Create Blogs <i class="fa-solid fa-plus"></i
+      ></a>
+      <a href="read.html">View Blogs</a>
+      <a href="#" id="signOutBtn"
+        >Logout <i class="fa-solid fa-right-from-bracket"></i
+      ></a>
+    </div>
+
+    <div id="signOutModal" class="modal">
+      <div class="modal-content">
+        <p>Are you sure you want to Log out?</p>
+        <button id="confirmSignOut">OK</button>
+        <button id="cancelSignOut">Cancel</button>
       </div>
     </div>
-    <!-- Navbar -->
 
-    <!-- create-blogs -->
     <div class="create-blogs" id="content">
-      <!-- blog-img -->
-
       <div class="blogImg"></div>
-      <!-- blog-img -->
 
-      <!-- formValidation -->
       <div class="formValidation">
         <p>Enter the Author:</p>
         <input
@@ -75,23 +91,14 @@
           Create Blog
         </button>
       </div>
-      <!-- formValidation -->
     </div>
-    <!-- create-blogs -->
 
-    <!-- Footer -->
     <div class="footer">
       <span>-- Create a Blogs @ for a celebrity, brand or business.</span>
     </div>
-    <!-- Footer -->
 
-    <!-- HTML -->
-
-    <!-- JavaScript -->
     <script src="create.js" type="module"></script>
-    <!-- JavaScript -->
-    <!-- SupahBase -->
+
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <!-- SupahBase -->
   </body>
 </html>

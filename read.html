@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Read Blogs</title>
+    <title>View Blogs</title>
     <link rel="icon" type="image/x-icon" href="sideBlogs.png" />
     <link
       rel="stylesheet"
@@ -15,22 +15,29 @@
     <link rel="stylesheet" href="read.css" />
   </head>
   <body>
-    <!-- HTML -->
-    <!-- Navbar -->
-    <div class="navbar">
-      <div class="socialFile">
-        <a class="socialFileBtn" href="index.html">Social Blogs</a>
-      </div>
+    <div class="autoTypingNavbar">
       <span class="tagline">View Blogs</span>
-      <div class="createHtmlFile">
-        <a class="createHtmlBtn" href="create.html">Create Blogs</a>
-      </div>
     </div>
-    <!-- Navbar -->
 
-    <!-- spinner -->
+    <div class="navbar">
+      <img
+        src="sideBlogs.png"
+        class="navbarLogo"
+        alt="blogLogo"
+        width="35px"
+        height="35px"
+      />
+      <a href="social.html">
+        Social Blogs <i class="fa-solid fa-thumbs-up"></i>
+      </a>
+      <a href="create.html" 
+        >Create Blogs <i class="fa-solid fa-plus"></i
+      ></a>
+      <a href="#" class="socialBlogBtn">View Blogs</a>
+      <a href="#">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+
     <div id="spinner"></div>
-    <!-- spinner -->
 
     <div class="main-read-blogs">
       <div class="blogs" id="blogging"></div>
@@ -39,15 +46,10 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-      <span>-- Read a Blogs @ for a celebrity, brand or business.</span>
+      <span>-- View a Blogs @ for a celebrity, brand or business.</span>
     </div>
-    <!-- Footer -->
-    <!-- HTML -->
 
-    <!-- JavaScript -->
     <script src="read.js" type="module"></script>
-    <!-- JavaScript -->
   </body>
 </html>

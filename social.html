@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogging World</title>
+    <title>Social Blogs</title>
     <link rel="icon" type="image/x-icon" href="sideBlogs.png" />
     <link
       rel="stylesheet"
@@ -15,26 +15,37 @@
     <link rel="stylesheet" href="social.css" />
   </head>
   <body>
-    <!-- HTML -->
-
-    <!-- PreLoader -->
-    <div id="preloader">
-      <h1>Blogging World</h1>
-      <div class="line-spinner"></div>
+    <div class="autoTypingNavbar">
+      <span class="tagline">Social Blogs</span>
     </div>
-    <!-- PreLoader -->
-    <!-- Navbar -->
+
     <div class="navbar">
-      <span class="tagline">Blogging World</span>
-      <div class="LogOutFile">
-        <a class="LogOutBtn" href="#">Logout</a>
+      <img
+        src="sideBlogs.png"
+        class="navbarLogo"
+        alt="blogLogo"
+        width="35px"
+        height="35px"
+      />
+      <a href="#" class="socialBlogBtn">
+        Social Blogs <i class="fa-solid fa-thumbs-up"></i>
+      </a>
+      <a href="create.html">Create Blogs <i class="fa-solid fa-plus"></i></a>
+      <a href="read.html">View Blogs</a>
+      <a href="#" id="signOutBtn"
+        >Logout <i class="fa-solid fa-right-from-bracket"></i
+      ></a>
+    </div>
+
+    <div id="signOutModal" class="modal">
+      <div class="modal-content">
+        <p>Are you sure you want to Log out?</p>
+        <button id="confirmSignOut">OK</button>
+        <button id="cancelSignOut">Cancel</button>
       </div>
     </div>
-    <!-- Navbar -->
 
-    <!-- spinner -->
     <div id="spinner"></div>
-    <!-- spinner -->
 
     <div class="main-read-blogs">
       <div class="blogs" id="blogging"></div>
@@ -43,15 +54,10 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
       <span>-- Social Blogs @ for a celebrity, brand or business.</span>
     </div>
-    <!-- Footer -->
-    <!-- HTML -->
 
-    <!-- JavaScript -->
     <script src="social.js" type="module"></script>
-    <!-- JavaScript -->
   </body>
 </html>

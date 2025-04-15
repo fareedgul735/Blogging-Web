@@ -10,71 +10,20 @@ body {
   font-family: sans-serif;
 }
 
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
+.autoTypingNavbar {
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999999999;
-}
-
-#preloader h1 {
-  font-size: 50px;
-  margin-bottom: 30px;
-  font-family: monospace;
-  letter-spacing: 2px;
-}
-
-.line-spinner {
-  width: 220px;
-  height: 5px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  animation: loadingLine 2s linear infinite;
-}
-
-@keyframes loadingLine {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  50% {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  51% {
-    transform-origin: right;
-  }
-  100% {
-    transform: scaleX(0);
-    transform-origin: right;
-  }
-}
-
-.navbar {
-  width: 100%;
-  height: 70px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-  position: fixed;
-  top: 0;
   padding: 0 20px;
-  z-index: 9999;
   box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .tagline {
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: #ffffff;
   white-space: nowrap;
   overflow: hidden;
@@ -88,7 +37,7 @@ body {
     width: 0;
   }
   50% {
-    width: 140px;
+    width: 94px;
   }
   100% {
     width: 0;
@@ -105,27 +54,116 @@ body {
   }
 }
 
-.LogOutFile {
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+.navbar {
+  width: 100%;
+  height: 62px;
+  background-color: #dfdede;
+  position: sticky;
+  top: 0px;
+  z-index: 999999999999;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navbarLogo {
+  cursor: pointer;
+  margin-left: -8%;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  background-image: url("sideBlogs.png");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.927);
+  animation: rotate 12s linear infinite;
 }
 
-.LogOutBtn {
-  padding: 10px 18px;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 6px;
+.navbar > a {
+  font-size: 16px;
   text-decoration: none;
-  transition: 0.3s;
-  display: inline-block;
+  color: #827e7e;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
 }
 
-.LogOutBtn:hover {
-  background-color: #5a44d1;
-  color: #ffffff;
+.navbar > a:hover {
+  background-color: #f6f4f4;
+  color: #000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
+
+.navbar > .socialBlogBtn {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  background: #00a884;
+  padding: 8px 12px;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(0.8);
+  opacity: 0;
+  animation: zoomIn 0.3s ease forwards;
+}
+
+.modal-content button {
+  margin: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#confirmSignOut {
+  background-color: #00a884;
+  color: white;
+}
+#cancelSignOut {
+  background-color: #ccc;
+}
+
+@keyframes fadeIn {
+  from { background-color: rgba(0, 0, 0, 0); }
+  to { background-color: rgba(0, 0, 0, 0.5); }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
 
 .main-read-blogs {
   width: 100%;
@@ -139,7 +177,7 @@ body {
   min-height: calc(100vh - 70px);
   background: #ffffff;
   position: fixed;
-  top: 70px;
+  top: 48px;
   left: 0;
   border-radius: 12px;
   display: flex;
@@ -149,6 +187,7 @@ body {
 }
 
 .blogImg {
+  cursor: pointer;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -177,7 +216,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding-bottom: 60px; 
+  padding-bottom: 40px;
 }
 
 .cardDiv {
@@ -188,7 +227,7 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
   overflow-x: hidden;
-  margin-top: 42px;
+  margin-top: -16px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   align-self: flex-start;
 }
@@ -202,6 +241,32 @@ body {
   object-fit: cover;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+}
+
+.avatarDiv {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #00bbff;
+  margin-left: 10px;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.avatarDiv:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(0, 187, 255, 0.4);
+}
+
+.avatarName {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .cardTitle {
@@ -221,6 +286,14 @@ body {
   font-size: 14px;
   color: #777;
   padding: 10px 20px;
+}
+
+.noBlogFound {
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  color: rgb(0, 0, 206);
+  font-size: 32px;
 }
 
 .moreDetail {
@@ -290,6 +363,11 @@ body {
   .blogs {
     width: 100%;
     margin-left: 0;
+  }
+  .noBlogFound {
+    position: absolute;
+    top: 40%;
+    right: 16%;
   }
 }
 
