@@ -3,9 +3,11 @@
   padding: 0px;
   overflow: hidden;
 }
+
 body {
   font-family: sans-serif;
 }
+
 #preloader {
   position: fixed;
   top: 0;
@@ -279,8 +281,9 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   background: #fffffff6;
+  gap: 106px;
 }
 
 .blogImg {
@@ -403,7 +406,7 @@ body {
   #preloader h1 {
     font-size: 28px;
   }
-  
+
   .line-spinner {
     width: 150px;
     height: 5px;
@@ -435,11 +438,17 @@ body {
   }
 
   .signUpValidation {
-    width: 82%;
+    width: 72%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .logInValidation {
-    width: 82%;
+    width: 72%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .footer {
@@ -451,7 +460,6 @@ body {
 }
 
 @media (min-width: 500px) and (max-width: 800px) {
-
   #preloader h1 {
     font-size: 28px;
   }
