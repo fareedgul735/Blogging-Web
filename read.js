@@ -39,7 +39,7 @@ const fetchCharacterByName = (name) => {
 };
 
 const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt, name } = cardDetail;
+  const { Image, Title, Description, Author, publishedAt,  } = cardDetail;
   const titleLimit = 10;
   const descriptionLimit = 34;
 
