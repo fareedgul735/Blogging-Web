@@ -384,20 +384,19 @@ body {
 
 .footer {
   width: 100%;
-  height: 60px;
-  background: #2f2c2c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ddd;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  background-color: #f5f5f5;
+  color: #444;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
   position: fixed;
-  bottom: 0;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  bottom: 0px;
 }
 
-.footer > span {
-  font-size: 16px;
-  font-family: sans-serif;
+.footer a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 500px) {
@@ -408,6 +407,9 @@ body {
   .line-spinner {
     width: 150px;
     height: 5px;
+  }
+  .footer {
+    padding: 10px 0;
   }
 
   .mainDiv {
@@ -455,6 +457,9 @@ body {
   .line-spinner {
     width: 150px;
     height: 5px;
+  }
+  .footer {
+    padding: 10px 0;
   }
   .mainDiv {
     flex-direction: column;
