@@ -409,14 +409,30 @@ body {
     display: none;
   }
 
+  #spinner {
+    display: none;
+    width: 60px;
+    height: 60px;
+    top: 46%;
+    left: 42%;
+  }
+  
+
   .blogs {
     width: 100%;
-    margin-left: 0;
+    margin-left: 0px;
   }
   .noBlogFound {
     position: absolute;
     top: 40%;
     right: 16%;
+  }
+  .footer {
+    width: 100%;
+    font-size: 12px;
+  }
+  .navbar {
+    display: none;
   }
 }
 
