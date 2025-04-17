@@ -11,6 +11,7 @@ import {
 import {
   getAuth,
   onAuthStateChanged,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -45,9 +46,6 @@ const createCard = (cardDetail, id) => {
   return `
     <div class="cardDiv">
       <img class="cardImg" src="${Image}" width="100%" height="242px" />
-      <div class="avatarDiv">
-        <a class="avatarName" href="#">${fetchCharacterByName(name)}</a>
-      </div>
       <h2 class="cardTitle">${Title.slice(0, titleLimit)} ...</h2>
       <p class="cardDescription">${Description.slice(
         0,
@@ -82,10 +80,20 @@ window.onUpdate = (id) => {
   window.location.href = `update.html#${id}`;
 };
 
+const avatarContainer = document.getElementById("userAvatar");
+
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     spinner.style.display = "block";
     blog.style.display = "none";
+
+    if (user.displayName) {
+      const initials = fetchCharacterByName(user.displayName);
+      avatarContainer.innerText = initials;
+      avatarContainer.style.display = "flex";
+    } else {
+      avatarContainer.style.display = "none";
+    }
 
     try {
       const q = query(collection(db, "blogs"), where("uid", "==", user.uid));
@@ -110,5 +118,27 @@ onAuthStateChanged(auth, async (user) => {
   } else {
     alert("Please log in first.");
     location.href = "index.html";
+  }
+});
+
+const signOutBtn = document.getElementById("signOutBtn");
+const modal = document.getElementById("signOutModal");
+const confirmBtn = document.getElementById("confirmSignOut");
+const cancelBtn = document.getElementById("cancelSignOut");
+
+signOutBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+cancelBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+confirmBtn.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    location.href = "index.html";
+  } catch (error) {
+    alert("Error Login out:", error.message);
   }
 });
