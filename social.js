@@ -36,7 +36,16 @@ const fetchCharacterByName = (name) => {
     .join("");
 };
 
+const avatarContainer = document.getElementById("userAvatar");
+
 onAuthStateChanged(auth, (user) => {
+  if (user.displayName) {
+    const initials = fetchCharacterByName(user.displayName);
+    avatarContainer.innerText = initials;
+    avatarContainer.style.display = "flex";
+  } else {
+    avatarContainer.style.display = "none";
+  }
   if (user) {
     readData();
   } else {
@@ -99,7 +108,6 @@ const readData = async () => {
     console.log("Error reading data:", error);
   }
 };
-
 
 const signOutBtn = document.getElementById("signOutBtn");
 const modal = document.getElementById("signOutModal");

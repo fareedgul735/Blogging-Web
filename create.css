@@ -1,11 +1,12 @@
 * {
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
+
 }
 
 body {
   font-family: sans-serif;
+    overflow-x: hidden;
 }
 
 .autoTypingNavbar {
@@ -54,53 +55,78 @@ body {
 
 .navbar {
   width: 100%;
-  height: 62px;
-  background-color: #dfdede;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border: none;
+  height: 80px;
+  background: rgb(255, 255, 255);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-}
-.navbarLogo {
-  cursor: pointer;
-  margin-left: -8%;
-  border-radius: 50%;
-  border: 5px solid #fff;
-  background-image: url("sideBlogs.png");
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 0 15px rgba(255, 102, 0, 0.927);
-  animation: rotate 12s linear infinite;
+  padding: 0 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgb(179, 175, 175);
+  gap: 702px;
 }
 
-.navbar > a {
+.navbarLogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  animation: rotate 12s linear infinite;
+  cursor: pointer;
+}
+
+.navbar-links {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 16px;
+  gap: 28px;
+}
+
+.navbar-links a {
+  font-size: 15px;
+  color: #ffffff;
+  background: #000000;
   text-decoration: none;
-  color: #827e7e;
-  background: #ffffff;
-  padding: 8px 12px;
-  border-radius: 1rem;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.navbar-links a::before {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-color: #000;
+  top: 0;
+  left: -10%;
+  transform: skewX(-20deg);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 50px;
+}
+
+.navbar-links a:hover::before {
+  opacity: 0.2;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.navbar-links > .socialBlogBtn {
+  background: #00bbff;
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 14px;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
-.navbar > a:hover {
-  background-color: #f6f4f4;
-  color: #000;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-.navbar > .socialBlogBtn {
-  color: #ffffff;
-  font-size: 16px;
-  text-decoration: none;
-  background: #00a884;
-  padding: 8px 12px;
-  border-radius: 1rem;
-  cursor: pointer;
+.navbar-links > .socialBlogBtn:hover {
+  transform: scale(1.05);
 }
 
 .modal {
@@ -137,7 +163,7 @@ body {
 }
 
 #confirmSignOut {
-  background-color: #00a884;
+  background-color: #000000;
   color: white;
 }
 #cancelSignOut {
@@ -172,6 +198,7 @@ body {
   width: 220px;
   height: 220px;
   border-radius: 50%;
+  cursor: pointer;
   border: 5px solid #fff;
   background-image: url("sideBlogs.png");
   background-size: cover;
