@@ -401,6 +401,15 @@ body {
 }
 
 @media (max-width: 500px) {
+  #preloader h1 {
+    font-size: 28px;
+  }
+  
+  .line-spinner {
+    width: 150px;
+    height: 5px;
+  }
+
   .mainDiv {
     flex-direction: column-reverse;
   }
@@ -439,6 +448,14 @@ body {
 }
 
 @media (min-width: 500px) and (max-width: 800px) {
+
+  #preloader h1 {
+    font-size: 28px;
+  }
+  .line-spinner {
+    width: 150px;
+    height: 5px;
+  }
   .mainDiv {
     flex-direction: column;
   }
