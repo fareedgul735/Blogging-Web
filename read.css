@@ -214,7 +214,7 @@ body {
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00d2ff, #3a47d5);
+  background-color: #00d2ff;
   color: #fff;
   font-weight: 600;
   font-size: 1.3rem;
