@@ -39,7 +39,7 @@ const fetchCharacterByName = (name) => {
 };
 
 const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt,  } = cardDetail;
+  const { Image, Title, Description, Author, publishedAt } = cardDetail;
   const titleLimit = 10;
   const descriptionLimit = 34;
 
@@ -56,9 +56,15 @@ const createCard = (cardDetail, id) => {
           publishedAt
         ).toLocaleString()}</span>
       </p>
+      <div class = "icons">
+        <div class = "detailIcons">
       <a class="moreDetail" href="detail.html#${id}">Read More</a>
+         </div>
+         <div class = "updatedIcons">
       <i onclick="onUpdate('${id}')" class="updateBlog fa-solid fa-pen"></i>
       <i onclick="onDelete('${id}')" class="blogDelete fa-solid fa-trash"></i>
+    </div>
+      </div>
     </div>`;
 };
 
@@ -142,7 +148,6 @@ confirmBtn.addEventListener("click", async () => {
     alert("Error Login out:", error.message);
   }
 });
-
 
 const sideBarBtnOpen = document.querySelector("#sideBarBtnOpen");
 const sideBarBtnClose = document.querySelector("#sideBarBtnClose");
