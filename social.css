@@ -174,14 +174,13 @@ body {
   background-color: #1a1a1a;
 }
 
-
 .sideBar {
   width: 280px;
   height: 100vh;
   background: rgba(0, 0, 0, 0.65);
   color: #fff;
   backdrop-filter: blur(10px);
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
@@ -193,7 +192,7 @@ body {
   transition: transform 0.4s ease-in-out;
   box-shadow: 4px 0 16px rgba(0, 0, 0, 0.2);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  pointer-events: none; 
+  pointer-events: none;
   opacity: 0;
 }
 
@@ -211,23 +210,23 @@ body {
   right: 12px;
 }
 
-.sideBarUserAvatar {
+#sideBarUserAvatar {
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00d2ff, #3a47d5);
+  background-color: #00d2ff;
   color: #fff;
   font-weight: 600;
   font-size: 1.3rem;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   margin-bottom: 40px;
-  box-shadow: 0 8px 20px rgba(0, 210, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 255, 251, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sideBarUserAvatar:hover {
+#sideBarUserAvatar:hover {
   transform: scale(1.08);
   box-shadow: 0 0 12px rgba(0, 187, 255, 0.6);
 }
@@ -275,7 +274,7 @@ body {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 10000000000000;
   left: 0;
   top: 0;
   width: 100%;
@@ -412,31 +411,6 @@ body {
   border-top-right-radius: 6px;
 }
 
-.avatarDiv {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #00bbff;
-  margin-left: 10px;
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.avatarDiv:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 0 3px rgba(0, 187, 255, 0.4);
-}
-
-.avatarName {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-}
 
 .cardTitle {
   font-size: clamp(18px, 2.5vw, 24px);

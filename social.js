@@ -36,17 +36,22 @@ const fetchCharacterByName = (name) => {
     .join("");
 };
 
-const avatarContainer = document.getElementById("userAvatar");
+const avatarContainer = document.querySelectorAll(".userAvatar");
 
 onAuthStateChanged(auth, (user) => {
-  if (user.displayName) {
-    const initials = fetchCharacterByName(user.displayName);
-    avatarContainer.innerText = initials;
-    avatarContainer.style.display = "flex";
-  } else {
-    avatarContainer.style.display = "none";
-  }
   if (user) {
+    if (user.displayName) {
+      const initials = fetchCharacterByName(user.displayName);
+      avatarContainer.forEach((avatar) => {
+        avatar.innerText = initials;
+        avatar.style.display = "flex";
+      });
+    } else {
+      avatarContainer.forEach((avatar) => {
+        avatar.style.display = "none";
+      });
+    }
+
     readData();
   } else {
     alert("Please login to view blogs.");
@@ -109,13 +114,15 @@ const readData = async () => {
   }
 };
 
-const signOutBtn = document.getElementById("signOutBtn");
+const signOutBtns = document.querySelectorAll(".signOutBtn");
 const modal = document.getElementById("signOutModal");
 const confirmBtn = document.getElementById("confirmSignOut");
 const cancelBtn = document.getElementById("cancelSignOut");
 
-signOutBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
+signOutBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
 });
 
 cancelBtn.addEventListener("click", () => {

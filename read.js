@@ -86,7 +86,7 @@ window.onUpdate = (id) => {
   window.location.href = `update.html#${id}`;
 };
 
-const avatarContainer = document.getElementById("userAvatar");
+const avatarContainer = document.querySelectorAll(".userAvatar");
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
@@ -95,10 +95,14 @@ onAuthStateChanged(auth, async (user) => {
 
     if (user.displayName) {
       const initials = fetchCharacterByName(user.displayName);
-      avatarContainer.innerText = initials;
-      avatarContainer.style.display = "flex";
+      avatarContainer.forEach((avatar) => {
+        avatar.innerText = initials;
+        avatar.style.display = "flex";
+      });
     } else {
-      avatarContainer.style.display = "none";
+      avatarContainer.forEach((avatar) => {
+        avatar.style.display = "none";
+      });
     }
 
     try {
@@ -127,13 +131,15 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-const signOutBtn = document.getElementById("signOutBtn");
+const signOutBtns = document.querySelectorAll(".signOutBtns");
 const modal = document.getElementById("signOutModal");
 const confirmBtn = document.getElementById("confirmSignOut");
 const cancelBtn = document.getElementById("cancelSignOut");
 
-signOutBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
+signOutBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
 });
 
 cancelBtn.addEventListener("click", () => {

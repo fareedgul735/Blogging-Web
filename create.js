@@ -99,13 +99,15 @@ window.addEventListener("load", () => {
   }, 500);
 });
 
-const signOutBtn = document.getElementById("signOutBtn");
+const signOutBtns = document.querySelectorAll(".signOutBtns");
 const modal = document.getElementById("signOutModal");
 const confirmBtn = document.getElementById("confirmSignOut");
 const cancelBtn = document.getElementById("cancelSignOut");
 
-signOutBtn.addEventListener("click", () => {
-  modal.style.display = "flex";
+signOutBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
 });
 
 cancelBtn.addEventListener("click", () => {

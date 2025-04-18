@@ -210,7 +210,7 @@ body {
   right: 12px;
 }
 
-.sideBarUserAvatar {
+#sideBarUserAvatar {
   width: 96px;
   height: 96px;
   border-radius: 50%;
@@ -226,7 +226,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sideBarUserAvatar:hover {
+#sideBarUserAvatar:hover {
   transform: scale(1.08);
   box-shadow: 0 0 12px rgba(0, 187, 255, 0.6);
 }
@@ -274,7 +274,7 @@ body {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 10000000;
   left: 0;
   top: 0;
   width: 100%;
@@ -331,7 +331,7 @@ body {
     opacity: 1;
   }
 }
-.avatarDiv {
+.userAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -346,7 +346,7 @@ body {
   cursor: pointer;
 }
 
-.avatarDiv:hover {
+.userAvatar:hover {
   transform: scale(1.1);
   box-shadow: 0 0 0 3px rgba(0, 187, 255, 0.4);
 }
