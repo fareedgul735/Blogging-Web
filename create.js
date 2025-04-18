@@ -121,6 +121,18 @@ confirmBtn.addEventListener("click", async () => {
   }
 });
 
+const sideBarBtnOpen = document.querySelector("#sideBarBtnOpen");
+const sideBarBtnClose = document.querySelector("#sideBarBtnClose");
+const sideBar = document.querySelector("#leftSideSideBar");
+
+sideBarBtnOpen?.addEventListener("click", () => {
+  sideBar.classList.add("active");
+});
+
+sideBarBtnClose?.addEventListener("click", () => {
+  sideBar.classList.remove("active");
+});
+
 // const url = "https://abwfisafbjptoxfaxiud.supabase.co";
 // const anonKey =
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFid2Zpc2FmYmpwdG94ZmF4aXVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ1NTUxODksImV4cCI6MjA2MDEzMTE4OX0.u-rQYaFtmQXgTJ0_3T85T1P28Wmb7F81jfTWl2O8xdA";

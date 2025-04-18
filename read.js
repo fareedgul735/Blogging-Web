@@ -142,3 +142,16 @@ confirmBtn.addEventListener("click", async () => {
     alert("Error Login out:", error.message);
   }
 });
+
+
+const sideBarBtnOpen = document.querySelector("#sideBarBtnOpen");
+const sideBarBtnClose = document.querySelector("#sideBarBtnClose");
+const sideBar = document.querySelector("#leftSideSideBar");
+
+sideBarBtnOpen?.addEventListener("click", () => {
+  sideBar.classList.add("active");
+});
+
+sideBarBtnClose?.addEventListener("click", () => {
+  sideBar.classList.remove("active");
+});
