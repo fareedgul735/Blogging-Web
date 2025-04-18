@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
   font-family: sans-serif;
@@ -33,14 +34,25 @@ html, body {
 }
 
 @keyframes typing {
-  0% { width: 0; }
-  50% { width: 94px; }
-  100% { width: 0; }
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 94px;
+  }
+  100% {
+    width: 0;
+  }
 }
 
 @keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: #fff; }
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
 }
 
 .navbar {
@@ -176,11 +188,11 @@ html, body {
   right: 12px;
 }
 
-.sideBarUserAvatar {
+.bloggingImg {
   width: 96px;
   height: 96px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00d2ff, #3a47d5);
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,8 +307,12 @@ html, body {
 }
 
 @keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .formValidation {
@@ -387,8 +403,12 @@ html, body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 768px) {
