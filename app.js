@@ -28,7 +28,6 @@ onAuthStateChanged(auth, (user) => {
 
 let signUpBtn = document.getElementById("signUpBtn");
 
-
 const onSignUp = async (e) => {
   e.preventDefault();
   let userName = document.getElementById("userName");
@@ -61,18 +60,16 @@ const onSignUp = async (e) => {
       await updateProfile(response.user, {
         displayName: userName?.value,
       });
-      if (!!response) {
-        alert("SignUp SuccessFully");
-        userName.value = "";
-        verifyEmail.value = "";
-        verifyPassword.value = "";
-        setTimeout(() => {
-          location.href = "social.html";
-        }, 500);
-        inputsArray.forEach(
-          (inputField) => (inputField.style.border = "1px solid gray")
-        );
-      }
+      alert("SignUp SuccessFully");
+      userName.value = "";
+      verifyEmail.value = "";
+      verifyPassword.value = "";
+      setTimeout(() => {
+        location.href = "social.html";
+      }, 500);
+      inputsArray.forEach(
+        (inputField) => (inputField.style.border = "1px solid gray")
+      );
     } catch (error) {
       console.log(error);
       alert("Internal Server Error");
