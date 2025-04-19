@@ -288,9 +288,9 @@ body {
   background: #fff;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
   padding: 40px 20px;
 }
 

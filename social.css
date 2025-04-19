@@ -411,7 +411,30 @@ body {
   border-top-right-radius: 6px;
 }
 
+.avatarDiv {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #00bbff;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 12px;
+  margin-top: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.avatarDiv:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(0, 187, 255, 0.3);
+}
+.avatarDiv > .avatarName {
+  text-decoration: none;
+  color: #fff;
+}
 .cardTitle {
   font-size: clamp(18px, 2.5vw, 24px);
   color: #333;
